@@ -6,7 +6,7 @@ This problem provides practice at:
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
          their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -134,14 +134,19 @@ def practice_problem4a(sequence):
       :type sequence: list | tuple | string
     """
     ####################################################################
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
-
+    string = []
+    for k in range(1, len(sequence)):
+        actualplace = k - 1
+        if sequence[k] == sequence[k-1]:
+            string = string + [actualplace]
+    return string
 
 def run_test_practice_problem4b():
     """ Tests the    practice_problem4b    function. """
@@ -204,6 +209,10 @@ def practice_problem4b(sequence):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
     ####################################################################
+    max = 0
+    for k in range(len(sequence)):
+        if k % 2 == 1:
+            num = sequence[k]
 
 
 def run_test_practice_problem4c():
@@ -295,7 +304,7 @@ def practice_problem4c(points):
       :rtype: rg.Point | string
     """
     ####################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -306,7 +315,15 @@ def practice_problem4c(points):
     #    DIFFICULTY:      9
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
-
+    for k in range(len(points)):
+        x = points[k].x
+        y = points[k].y
+        if is_prime(x) == True:
+            if is_prime(y) == True:
+                points[k].x = y
+                points[k].y = x
+                return points[k]
+    return 'Not found'
 
 def run_test_practice_problem4d():
     """ Tests the    practice_problem4d    function. """
