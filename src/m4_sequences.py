@@ -416,7 +416,13 @@ def practice_problem4d(sequence):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
-
+    total = 0
+    for k in range(0, len(sequence)-1):
+        number1 = sequence[k]
+        number2 = sequence[k+1]
+        if is_prime(number1) and is_prime(number2) and number1 != number2:
+            total = total + sequence[k]
+    return total
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
