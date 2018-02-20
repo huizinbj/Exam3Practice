@@ -90,7 +90,7 @@ def hourglass(window, n, point, radius, color):
     a color that rosegraphics understands.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # ------------------------------------------------------------------
     ####################################################################
@@ -104,7 +104,6 @@ def hourglass(window, n, point, radius, color):
     # ------------------------------------------------------------------
     hourglass_helper(window, n, point, radius, color, 1)
     hourglass_helper(window, n, point, radius, color, -1)
-
 
 
 def hourglass_helper(window, n, point, radius, color, direction):
@@ -130,6 +129,7 @@ def hourglass_helper(window, n, point, radius, color, direction):
         y_move = math.sqrt((2 * radius) ** 2 - radius ** 2)
         new_y = circle.center.y - direction * y_move
         point = rg.Point(new_x, new_y)
+
 
 def run_test_many_hourglasses():
     """ Tests the    many_hourglasses    function. """
