@@ -29,6 +29,7 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 ########################################################################
 
 import rosegraphics as rg
+import math
 
 
 def main():
@@ -101,6 +102,34 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # ------------------------------------------------------------------
+    hourglass_helper(window, n, point, radius, color, 1)
+    hourglass_helper(window, n, point, radius, color, -1)
+
+
+
+def hourglass_helper(window, n, point, radius, color, direction):
+
+    for k in range(n):
+        num_circles = k + 1
+        starting_x = point.x
+        for j in range(num_circles):
+            circle = rg.Circle(point, radius)
+            circle.fill_color = color
+            circle.attach_to(window)
+            line_p1 = circle.center.x - circle.radius
+            p1 = rg.Point(line_p1, circle.center.y)
+            line_p2 = circle.center.x + circle.radius
+            p2 = rg.Point(line_p2, circle.center.y)
+            line = rg.Line(p1, p2)
+            line.attach_to(window)
+            window.render(0.01)
+            new_x = circle.center.x + 2 * circle.radius
+            point = rg.Point(new_x, circle.center.y)
+
+        new_x = starting_x - radius
+        y_move = math.sqrt((2 * radius) ** 2 - radius ** 2)
+        new_y = circle.center.y - direction * y_move
+        point = rg.Point(new_x, new_y)
 
 def run_test_many_hourglasses():
     """ Tests the    many_hourglasses    function. """
